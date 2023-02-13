@@ -93,12 +93,13 @@ abstract class Stopwatch {
     }, 1) as unknown as number;
   };
 
-  step() {
-    /*
-    Funkcja ta powinna zwiększać liczbę sekund w this.currentTime o jeden, a następnie uruchamiać metodę
-    renderującą aktualny czas w HTML-u (this.renderTime).
+  protected step(): void {
+    /* [DONE]
+    Funkcja ta powinna zwiększać liczbę sekund w this.currentTime o jeden, a następnie uruchamiać metodę renderującą aktualny czas w HTML-u (this.renderTime).
     */
-  }
+    this.currentTime = this.currentTime + 1;
+    this.renderTime();
+  };
 
   stop() {
     /*
