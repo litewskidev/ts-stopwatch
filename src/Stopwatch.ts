@@ -59,11 +59,19 @@ abstract class Stopwatch {
     this.dom.resetBtn.addEventListener('click', () => this.reset());
   };
 
-  formatTime(time) {
-    /*
+  protected formatTime(time: number): string {
+    /* [DONE]
     Funkcja ta powinna przyjmować czas w milisekundach a następnie zwracać go w formacie mm:ss:ms (np. 02:23:12).
     */
-  }
+    const pad0 = (num: number): string => (
+      num < 10 ? `0${num}` : num.toString()
+    );
+    const mm = Math.floor(time/60000);
+    const ss = Math.floor((time - mm * 60000)/1000);
+    const ms = time - mm * 60000 - ss * 1000;
+
+    return `${pad0(mm)}:${pad0(ss)}:${pad0(ms).substr(0, 2)}`;
+  };
 
   renderTime() {
     /*
