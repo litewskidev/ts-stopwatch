@@ -10,7 +10,7 @@ class StopwatchWithResults extends Stopwatch {
     this.prepareActions();
   };
 
-  prepareElements(element: HTMLDivElement): void {
+  private prepareElements(element: HTMLDivElement): void {
     this.dom.resultsList  = <HTMLDivElement> (
       element.querySelector('.stopwatch__results')
     );
@@ -22,12 +22,14 @@ class StopwatchWithResults extends Stopwatch {
     );
   };
 
-  prepareActions() {
-    /*
+  private prepareActions(): void {
+    /* [DONE]
     Funkcja ta powinna dodawać nasłuchwiacze do buttonów this.dom.addToListBtn oraz this.dom.resetListBtn.
     Pierwszy powinien po kliknięciu uruchamiać metodę this.addToList, a druga this.resetList.
     */
-  }
+    this.dom.addToListBtn.addEventListener("click", () => this.addToList());
+    this.dom.resetListBtn.addEventListener("click", () => this.resetList());
+  };
 
   renderList() {
     /*
