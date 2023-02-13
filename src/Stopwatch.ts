@@ -10,7 +10,7 @@ abstract class Stopwatch {
 
   protected currentTime: number = 0;
   private timer: number | null = null;
-  protected dom = <StopWatchDom>{};
+  protected dom = <StopWatchDom> {};
 
   constructor(element: HTMLDivElement) {
     this.getElements(element);
@@ -43,8 +43,8 @@ abstract class Stopwatch {
     );
   };
 
-  initActions() {
-    /*
+  private initActions(): void {
+    /* [DONE]
     Funkcja ta powinna nadać buttonom z buttonów stopwatch__actions odpowiednie nasłuchiwacze na event click.
     Kliknięcie na każdy z buttonów powinno uruchamiać odpowiednie funkcje.
 
@@ -54,7 +54,10 @@ abstract class Stopwatch {
 
     Aby dostać się do tych elementów, wykorzystaj referencję przygotowane wcześniej w funkcji this.getElements.
     */
-  }
+    this.dom.startBtn.addEventListener('click', () => this.start());
+    this.dom.stopBtn.addEventListener('click', () => this.stop());
+    this.dom.resetBtn.addEventListener('click', () => this.reset());
+  };
 
   formatTime(time) {
     /*
