@@ -1,31 +1,51 @@
+interface StopWatchDom {
+  currentTime: HTMLDivElement;
+  startBtn: HTMLButtonElement;
+  stopBtn: HTMLButtonElement;
+  resetBtn: HTMLButtonElement;
+  [x: string]: HTMLElement;
+};
+
 abstract class Stopwatch {
 
-  currentTime = 0
-  timer = null
-  dom = {}
+  protected currentTime: number = 0;
+  private timer: number | null = null;
+  protected dom = <StopWatchDom>{};
 
-  constructor(element) {
-    this.getElements(element)
-    this.initActions()
-    this.renderTime()
-  }
+  constructor(element: HTMLDivElement) {
+    this.getElements(element);
+    this.initActions();
+    this.renderTime();
+  };
 
-  getElements(element) {
-    /*
+  private getElements(element: HTMLDivElement): void {
+    /* [DONE]
     Funkcja ta powinna przyjąć jako argument referencję do elementu DOM, w którym znajduje się
     cała struktura stopera. Następnie powinna przygotować referencję do obecnych w tym elemencie dzieci.
-    
-    Konkretnie do: 
-    – stopwatch__current-time, 
+
+    Konkretnie do:
+    – stopwatch__current-time,
     – wszystkich buttonów stopwatch__actions
 
     Wszystkie referencje dla czytelności przechowuj w obiekcie this.dom.
     */
-  }
+    this.dom.currentTime = <HTMLDivElement> (
+      element.querySelector(".stopwatch__current-time")
+    );
+    this.dom.startBtn = <HTMLButtonElement> (
+      element.querySelector(".stopwatch__start-btn")
+    );
+    this.dom.stopBtn = <HTMLButtonElement> (
+      element.querySelector(".stopwatch__stop-btn")
+    );
+    this.dom.resetBtn = <HTMLButtonElement> (
+      element.querySelector(".stopwatch__reset-btn")
+    );
+  };
 
   initActions() {
     /*
-    Funkcja ta powinna nadać buttonom z buttonów stopwatch__actions odpowiednie nasłuchiwacze na event click. 
+    Funkcja ta powinna nadać buttonom z buttonów stopwatch__actions odpowiednie nasłuchiwacze na event click.
     Kliknięcie na każdy z buttonów powinno uruchamiać odpowiednie funkcje.
 
     Start -> start()
@@ -40,12 +60,12 @@ abstract class Stopwatch {
     /*
     Funkcja ta powinna przyjmować czas w milisekundach a następnie zwracać go w formacie mm:ss:ms (np. 02:23:12).
     */
-  } 
+  }
 
   renderTime() {
     /*
     Funkcja ta powinna renderować w stopwatch__current-time zawartość obiektu this.currentTime.
-    Oczywiście wcześniej należy sformatować czas przy użyciu funkcji this.formatTime. 
+    Oczywiście wcześniej należy sformatować czas przy użyciu funkcji this.formatTime.
     */
   }
 
@@ -66,7 +86,7 @@ abstract class Stopwatch {
   }
 
   stop() {
-    /* 
+    /*
     Funkcja ta powinna zatrzymywać interval przypisany do this.timer.
     */
   }
