@@ -101,11 +101,12 @@ abstract class Stopwatch {
     this.renderTime();
   };
 
-  stop() {
-    /*
+  protected stop(): void {
+    /* [DONE]
     Funkcja ta powinna zatrzymywać interval przypisany do this.timer.
     */
-  }
+    clearInterval(this.timer as  number);
+  };
 
   reset() {
     /*
