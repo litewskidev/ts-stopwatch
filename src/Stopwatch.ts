@@ -73,12 +73,13 @@ abstract class Stopwatch {
     return `${pad0(mm)}:${pad0(ss)}:${pad0(ms).substr(0, 2)}`;
   };
 
-  renderTime() {
-    /*
+  protected renderTime(): void {
+    /* [DONE]
     Funkcja ta powinna renderować w stopwatch__current-time zawartość obiektu this.currentTime.
     Oczywiście wcześniej należy sformatować czas przy użyciu funkcji this.formatTime.
     */
-  }
+    this.dom.currentTime.innerHTML = this.formatTime(this.currentTime);
+  };
 
   start() {
     /*
