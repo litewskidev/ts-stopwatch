@@ -108,13 +108,13 @@ abstract class Stopwatch {
     clearInterval(this.timer as  number);
   };
 
-  reset() {
-    /*
-    Ta funkcja powinna resetować czas zapisany w this.currentTime, a więć zmieniać jego wartość na zero.
-    Naturalnie powinno to wiązać się również z przerenderowaniem HTML-a (this.renderTime).
+  protected reset(): void {
+    /* [DONE]
+    Ta funkcja powinna resetować czas zapisany w this.currentTime, a więć zmieniać jego wartość na zero. Naturalnie powinno to wiązać się również z przerenderowaniem HTML-a (this.renderTime).
     */
-  }
+    this.currentTime = 0;
+    this.dom.currentTime.innerHTML = this.formatTime(this.currentTime);
+  };
+};
 
-}
-
-export default Stopwatch
+export default Stopwatch;
