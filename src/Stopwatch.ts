@@ -81,14 +81,17 @@ abstract class Stopwatch {
     this.dom.currentTime.innerHTML = this.formatTime(this.currentTime);
   };
 
-  start() {
-    /*
+  protected start(): void {
+    /* [DONE]
     Funkcja ta powinna wystartować interwał, który będzie wykonywał się co milisekundę.
     Powinien on każdorazowo włączać funkcję this.step
 
     Dla wygody przypisz ten interwał do this.timer
     */
-  }
+    this.timer = setInterval(() => {
+      this.step();
+    }, 1) as unknown as number;
+  };
 
   step() {
     /*
