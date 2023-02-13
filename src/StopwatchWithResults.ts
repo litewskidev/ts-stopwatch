@@ -1,20 +1,26 @@
 import Stopwatch from './Stopwatch.js'
 
 class StopwatchWithResults extends Stopwatch {
-  
-  results = []
 
-  constructor(element) {
-    super(element)
-    this.prepareElements(element)
-    this.prepareActions()
-  }
+  results: string[] = [];
 
-  prepareElements(element) {
-    this.dom.resultsList = element.querySelector('.stopwatch__results')
-    this.dom.addToListBtn = element.querySelector('.stopwatch__start-add-to-list')
-    this.dom.resetListBtn = element.querySelector('.stopwatch__start-reset-list')
-  }
+  constructor(element: HTMLDivElement) {
+    super(element);
+    this.prepareElements(element);
+    this.prepareActions();
+  };
+
+  prepareElements(element: HTMLDivElement): void {
+    this.dom.resultsList  = <HTMLDivElement> (
+      element.querySelector('.stopwatch__results')
+    );
+    this.dom.addToListBtn = <HTMLDivElement> (
+      element.querySelector('.stopwatch__start-add-to-list')
+    );
+    this.dom.resetListBtn = <HTMLDivElement> (
+      element.querySelector('.stopwatch__start-reset-list')
+    );
+  };
 
   prepareActions() {
     /*
