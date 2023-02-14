@@ -40,7 +40,7 @@ class StopwatchWithResults extends Stopwatch {
     */
     this.dom.resultsList.replaceChildren(this.dom.resultsHeading);
 
-    const results = `<ul>${this.results.map(
+    const results: string = `<ul>${this.results.map(
       (currentTime) => `<li><p>${currentTime}</p></li>`
     ).join(" ")}</ul>`;
 
@@ -51,17 +51,20 @@ class StopwatchWithResults extends Stopwatch {
     /* [DONE]
     Funkcja ta powinna pobierać aktualny czas z this.currentTime, formatować go i w takiej postaci zapisywać do tablicy this.results. Następnie powinna renderować aktualną listę na stronie (this.renderList).
     */
-    const addTime = this.formatTime(this.currentTime);
+    const addTime: string = this.formatTime(this.currentTime);
     this.results.push(addTime);
 
     this.renderList();
   };
 
-  protected resetList() {
+  protected resetList(): void {
     /* [IN PROGRESS]
     Funkcja ta powinna czyścić tablicę this.results oraz zawartość this.dom.resultsList
     */
+    this.results = [];
+    this.dom.resultsList.replaceChildren(this.dom.resultsHeading);
+    this.dom.resultsList.insertAdjacentHTML("beforeend", `<ul><li><p>No results :(</p></li></ul>`);
   };
 };
 
-export default StopwatchWithResults
+export default StopwatchWithResults;
